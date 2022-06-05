@@ -1,0 +1,19 @@
+/*API_KEY=fd84130707324b8aabb43289e7bdc957*/
+API_KEY=5ec48fae5dca49418dc5969f42ca1eb0
+
+INSERT INTO typediets  VALUES (uuid_generate_v4(), 'gluten free'), (uuid_generate_v4(), 'ketogenic'), (uuid_generate_v4(), 'vegetarian'), (uuid_generate_v4(), 'lacto-vegetarian'), (uuid_generate_v4(), 'ovo-vegetarian'), (uuid_generate_v4(), 'vegan'), (uuid_generate_v4(), 'paleo'), (uuid_generate_v4(), 'low fodmap'), (uuid_generate_v4(), 'whole30');
+
+
+{
+    "name": "mani",
+    "summary": "hajhsjahjshjah",
+    "health_score": 76,
+    "steps": ["paso1", "paso2", "paso3"],
+    "img": "https://spoonacular.com/recipeImages/716426-312x231.jpg",
+    "type": [
+    "gluten free",
+    "ovo vegetarian",
+    "lacto vegetarian",
+    "vegan"
+    ]
+}
