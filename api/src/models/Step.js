@@ -13,6 +13,10 @@ module.exports = (sequelize) =>{
             type: DataTypes.TEXT,
             allowNull: false,
         },
+        number: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
     }, {timeStamps: false,
         createdAt: false, // don't add createdAt attribute
         updatedAt: false});
