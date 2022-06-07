@@ -106,10 +106,37 @@ router.post('/', async(req, res) =>{
     }
 });
 
+const getByIdApi = async (id)=> { 
+    try {
+        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`);
+        let e = response.data;
+            return {
+                id: e.id,
+                name: e.title.toLowerCase(),
+                summary: e.summary,
+                health_score: e.healthScore,
+                img: e.image,
+                steps: e.analyzedInstructions[0]?.steps.map((s) =>{
+                    return {
+                        number: s.number,
+                        step: s.step
+                    }
+                }),
+                typediets: (e.diets?.map((i) =>{
+                    return{
+                        name: i,
+                    }
+                }))
+            }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 router.get('/:id', async(req, res)=>{
     try {
         let { id } = req.params;
-        let recipes = await getAllRecipes();
+        let recipes = (await getRecipesDb()).concat(await getByIdApi(id));
         if(!id) return res.status(400).json({ msg: `Ingrese id` });
         let findId = recipes.find((e) => parseInt(e.id )=== parseInt(id));
         return findId? res.status(200).json(findId): res.status(404).json({ msg: `not found recipes with id:  ${id}`});
