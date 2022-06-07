@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, ButtonsDiv, ButtonNext, ButtonPrev } from '../css/Home.css.js';
+import { Container, Grid, ButtonsDiv, ButtonNext, ButtonPrev, P } from '../css/Home.css.js';
 import Card from './Card.jsx'
 import NavBar from '../components/NavBar'
 
@@ -20,7 +20,7 @@ const Home = (props) => {
         </Grid>
         <ButtonsDiv>
             <ButtonPrev onClick={props.prevHandler}></ButtonPrev>
-            <p>Pagina: {props.currentPage}</p>
+            <P>Pagina: {props.currentPage}</P>
             <ButtonNext onClick={props.nextHandler}></ButtonNext>
         </ButtonsDiv>
       </Container>

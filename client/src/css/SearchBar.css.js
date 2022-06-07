@@ -9,11 +9,11 @@ export const Input = styled.input(
     display: 'block',
     width: '20%',
     marginLeft: 3,
-    fontFamily: 'body',
     color: 'black',
     boxShadow: 'none',
     borderRadius: '30px', 
     textAlign: 'center',
+    fontFamily: 'Papyrus',
     borderStyle: 'double',
     '&:focus':{
       outline: 0,
@@ -32,14 +32,16 @@ export const Button = styled.input(
     float: 'right',
     boxSizing: 'border-box',
     display: 'block',
-    width: '10%',
+    width: '20%',
     marginLeft: 3,
     border: 'thin',
-    fontFamily: 'body',
+    fontFamily: 'Papyrus',
     color: '#ffffff',
-    fontWeight: 'bold',
     backgroundColor: '#4c4dcc',
     borderRadius: '30px',
+    '&:hover': {
+      cursor: 'pointer',
+    }
   })
 );
 

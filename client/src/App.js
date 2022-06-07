@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Routes,  Route} from "react-router-dom";
 import LogIn from "./components/LogInPage.jsx";
-import Home from './components/Home.jsx'
+import Home from './components/Home.jsx';
+import Form from './components/CreateRecipeForm.jsx';
 const ITEM_PER_PAGE = 9;
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
     name: "2 Cauliflower, Brown Rice, and Vegetable Fried Rice",
     typediets: [
       {
-          "name": "gluten free"
+          "name": "ketogenic"
       },
       {
           "name": "dairy free"
@@ -50,10 +51,7 @@ function App() {
     name: "3 Cauliflower, Brown Rice, and Vegetable Fried Rice",
     typediets: [
       {
-          "name": "gluten free"
-      },
-      {
-          "name": "dairy free"
+          "name": "vegetarian"
       },
       {
           "name": "lacto ovo vegetarian"
@@ -70,13 +68,7 @@ function App() {
     name: "4 Cauliflower, Brown Rice, and Vegetable Fried Rice",
     typediets: [
       {
-          name: "gluten free"
-      },
-      {
-          name: "dairy free"
-      },
-      {
-          name: "lacto ovo vegetarian"
+          name: "ovo vegetarian"
       },
       {
           name: "vegan"
@@ -90,13 +82,7 @@ function App() {
     name: "5 Cauliflower, Brown Rice, and Vegetable Fried Rice",
     typediets: [
       {
-          "name": "gluten free"
-      },
-      {
-          "name": "dairy free"
-      },
-      {
-          "name": "lacto ovo vegetarian"
+          "name": "lacto vegetarian"
       },
       {
           "name": "vegan"
@@ -109,15 +95,6 @@ function App() {
     name: "6 Cauliflower, Brown Rice, and Vegetable Fried Rice",
     typediets: [
       {
-          "name": "gluten free"
-      },
-      {
-          "name": "dairy free"
-      },
-      {
-          "name": "lacto ovo vegetarian"
-      },
-      {
           "name": "vegan"
       }  
     ],
@@ -128,7 +105,7 @@ function App() {
     name: "7 Cauliflower, Brown Rice, and Vegetable Fried Rice",
     typediets: [
       {
-          name: "gluten free"
+          name: "paleo"
       },
       {
           name: "dairy free"
@@ -148,7 +125,7 @@ function App() {
     name: "8 Cauliflower, Brown Rice, and Vegetable Fried Rice",
     typediets: [
       {
-          "name": "gluten free"
+          "name": "low fodmap"
       },
       {
           "name": "dairy free"
@@ -167,7 +144,7 @@ function App() {
     name: "9 Cauliflower, Brown Rice, and Vegetable Fried Rice",
     typediets: [
       {
-          "name": "gluten free"
+          "name": "whole30"
       },
       {
           "name": "dairy free"
@@ -399,7 +376,8 @@ function App() {
   return (
     <Routes>
         <Route path="/" element={<LogIn/>} />
-        <Route path="/home" element={<Home currentPage={currentPage}  recipes={item} nextHandler={nextHandler} prevHandler= {prevHandler}/>} />
+        <Route path="/home" element={<Home currentPage={currentPage+1}  recipes={item} nextHandler={nextHandler} prevHandler= {prevHandler}/>} />
+        <Route path="/form" element={<Form/>}/>
     </Routes>
   );
 }

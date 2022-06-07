@@ -6,7 +6,7 @@ import img2 from '../img/healtlyIcon.png'
 const Card =({id, name,img, typediets, health_score}) => {
     return (
         <Container key={id}>
-                <Information>
+                <Information diet={typediets[0]}>
                 <Icon src={img} alt='food im'/>
                 </Information>
                 <Detail>
@@ -16,7 +16,7 @@ const Card =({id, name,img, typediets, health_score}) => {
                         <h5>{health_score} %</h5>
                     </HealtyPanel>
                     <Ul>
-                        {typediets.map(e => <Li>{e}, </Li>)}
+                        {typediets.map(e => <Li>{e},</Li>)}
                     </Ul>
                 </Detail>
         </Container>
