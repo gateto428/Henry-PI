@@ -1,6 +1,5 @@
 require('dotenv').config();
 const axios = require('axios');
-const e = require('express');
 const express = require('express');
 const router = express.Router();
 const {API_KEY} = process.env;
@@ -136,12 +135,18 @@ const getByIdApi = async (id)=> {
 router.get('/:id', async(req, res)=>{
     try {
         let { id } = req.params;
-        let recipes = (await getRecipesDb()).concat(await getByIdApi(id));
         if(!id) return res.status(400).json({ msg: `Ingrese id` });
-        let findId = recipes.find((e) => parseInt(e.id )=== parseInt(id));
-        return findId? res.status(200).json(findId): res.status(404).json({ msg: `not found recipes with id:  ${id}`});
+        if(!id.includes('-')){
+            console.log('entre')
+            let recipe = await getByIdApi(id); 
+            return recipe? res.status(200).json(recipe): res.status(404).json({ msg: `not found recipes with id:  ${id}`});
+        }else {
+            let recipes = await getRecipesDb();
+            let findId = recipes.find((e) => e.id === id);
+            return findId? res.status(200).json(findId): res.status(404).json({ msg: `not found recipes with id:  ${id}`});
+        }
     } catch (error) {
-        res.status(404).json({error});
+        return res.status(404).json({error});
     }
 });
 
