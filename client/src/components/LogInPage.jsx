@@ -1,19 +1,17 @@
 import {Container, LogingContainer, Form, Input, Button} from '../css/LogIn.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { getFullRecipes } from '../redux/actions/index.js';
 import { useDispatch } from 'react-redux'
-import { getFullRecipes } from '../redux/actions/index.js'
-
 
 
 const LogInPage =() => {
-  const dispatch =  useDispatch()
   const [name, setname] = useState('');
+  const dis = useDispatch();
 
   const handleSubmit = ()=>{
     alert(`Hola ${name}`)
-    dispatch(getFullRecipes());
-    //() => setname()
+    dis(getFullRecipes());
   }
  
   return (

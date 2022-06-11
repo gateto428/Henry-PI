@@ -36,12 +36,13 @@ export function getFullRecipes(){
 }
 //Get Recipe per ID
 export function getRecipeDetail(id){
-    return function(dispatch){
-        return axios.get(HOST+`recipes/${id}`)
-        .then(response => response.data)
-        .the(data  => {
-            dispatch({type: GET_RECIPE_DETAIL, payload: data});
-        });
+    return async function(dispatch){
+        try {
+            let response =  await axios.get(HOST+`recipes/${id}`)
+            return dispatch({type: GET_RECIPE_DETAIL, payload: response.data});
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.response.data});
+        }
     }
 }
 //get Recipes per title dispatch({type: GET_RECIPES_TITLE, payload: data});
@@ -83,8 +84,8 @@ export function nextHandler(recipes, currentPage){
     return function(dispatch){
         let totalElements = recipes.length;
         let nextPage = currentPage+1;
-        let firstIndex = nextPage * ITEM_PER_PAGE;
-        let endIndex = firstIndex + ITEM_PER_PAGE;
+        let firstIndex = nextPage * ITEM_PER_PAGE; //9
+        let endIndex = firstIndex + ITEM_PER_PAGE; //18
         if(firstIndex >= totalElements) return dispatch({type: NONE, payload:{}});
         return dispatch({type: NEXT_PAGE, payload:{item: recipes.slice(firstIndex, endIndex),
             currentPage: nextPage

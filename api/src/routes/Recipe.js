@@ -112,7 +112,7 @@ const getByIdApi = async (id)=> {
             return {
                 id: e.id,
                 name: e.title.toLowerCase(),
-                summary: e.summary,
+                summary: e.summary.replaceAll(/<(“[^”]*”|'[^’]*’|[^'”>])*>/g, ''),
                 health_score: e.healthScore,
                 img: e.image,
                 steps: e.analyzedInstructions[0]?.steps.map((s) =>{
@@ -137,7 +137,6 @@ router.get('/:id', async(req, res)=>{
         let { id } = req.params;
         if(!id) return res.status(400).json({ msg: `Ingrese id` });
         if(!id.includes('-')){
-            console.log('entre')
             let recipe = await getByIdApi(id); 
             return recipe? res.status(200).json(recipe): res.status(404).json({ msg: `not found recipes with id:  ${id}`});
         }else {

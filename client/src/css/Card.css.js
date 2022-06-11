@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-//import css from '@styled-system/css' box-shadow: 5px 10px 18px #888888;
 
 export const Container = styled.div`
   width: 31%;
@@ -33,7 +32,7 @@ export const Information  = styled.div`
     display: flex;
     align-items: center;
     flex-direction: row;
-    background-color: ${(props) =>(props.diet === 'gluten free' ? '#503f9d' : props.diet === 'ketogenic'? '#eda74f': props.diet === 'vegetarian'? '#4e94ec':props.diet === 'lacto vegetarian'? '#420098':props.diet === 'ovo vegetarian'? '#00b4b3':props.diet === 'vegan'?'#b40001':props.diet === 'paleo'?'#8c9d3f':props.diet === 'low fodmap'?'#d3ec4e': '#cc4c4d')};
+    background-color: ${(props) => (props.color === 0? '#503f9d' : props.color === 1? '#eda74f': props.color === 2? '#4e94ec':props.color === 3? '#420098':props.color === 4? '#00b4b3':props.color === 5?'#b40001':props.color === 6?'#8c9d3f':props.color === 7?'#d3ec4e': '#cc4c4d')};
     border-radius: 34% 100% 100% 23% / 35% 100% 100% 22%;
 `;
 

@@ -1,9 +1,10 @@
 import React, {Component } from 'react';
 import { Container, Grid, ButtonsDiv, ButtonNext, ButtonPrev, P } from '../css/Home.css.js';
 import Card from './Card.jsx';
-import NavBar from './NavBar';
+import NavBar from './NavBar.jsx';
+import Loader from './Loader.jsx';
 import { connect } from "react-redux";  
-import { nextHandler, prevHandler } from '../redux/actions/index.js';
+import { nextHandler, prevHandler, getFullRecipes } from '../redux/actions/index.js';
 
 export class Home extends Component {
   constructor(props) {
@@ -30,21 +31,26 @@ export class Home extends Component {
     this.props.previousHandler(arry, this.props.currentPage, this.props.filter);
   }
 
+  UNSAFE_componentWillMount(){
+    this.props.getFullRecipes();
+  }
+
   render() {
-    
     if(this.props.item && this.props.item.length > 0){
       return (
        <Container>
            <NavBar/>
            <Grid>
-             {this.props.item.map(c => <Card 
-                 key ={c.id}
-                 id={c.id}
-                 name = {c.name}
-                 img = {c.img}
-                 typediets = {c.typediets.map(e => e.name)}
-                 health_score = {c.health_score}
-               /> )}
+             {this.props.item.map(c =>{
+               return (<Card
+                  key={c.id}
+                  id = {c.id}
+                  name = {c.name}
+                  img = {c.img}
+                  typediets = {c.typediets.map(e => e.name)}
+                  health_score = {c.health_score}
+                  /> )
+             })}
            </Grid>
            <ButtonsDiv>
                <ButtonPrev onClick={e => this.hendlePrevousPage(e)}></ButtonPrev>
@@ -55,10 +61,10 @@ export class Home extends Component {
        );
    }else{
      return (
-       <Container>
-         <NavBar/>
-         <h1>Not Found Recipes</h1>
-       </Container>
+        <Container>
+          <NavBar/>
+            <Loader/>
+        </Container>
      );
    }
   }
@@ -77,7 +83,8 @@ function mapStateToProps(state){
 function mapDispachToProps(dispatch){
   return{
     nextHandler: (recipes, currentPage) => dispatch(nextHandler(recipes, currentPage)),
-    previousHandler: (recipes, currentPage) => dispatch(prevHandler(recipes, currentPage))
+    previousHandler: (recipes, currentPage) => dispatch(prevHandler(recipes, currentPage)),
+    getFullRecipes: () => dispatch(getFullRecipes())
   }
 }
 

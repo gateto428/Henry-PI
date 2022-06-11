@@ -24,7 +24,8 @@ function rootReducer(state = initialState, action){
             item: action.payload.recipes.slice(0, ITEM_PER_PAGE),
             recipesFilter: [],
             filter: false,
-            currentPage: action.payload.currentPage
+            currentPage: action.payload.currentPage,
+            recipe: {}
         }
     }
     if(action.type === GET_RECIPE_DETAIL){
