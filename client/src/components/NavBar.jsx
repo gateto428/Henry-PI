@@ -3,14 +3,18 @@ import {Container, P, Select, Button} from '../css/NavBar.css.js'
 import SearchBar from './SearchBar.jsx';
 import { Link } from 'react-router-dom'; //filterPerDiet
 import { useDispatch } from 'react-redux'
-import { filterPerDiet, sort } from '../redux/actions/index.js'
+import { filterPerDiet, sort, getFullRecipes } from '../redux/actions/index.js'
 
 const NavBar = () => {
   const dispatch =  useDispatch();
 
   return (
     <Container>
-        <P>FoodApp</P>
+      <Link to ={`/home`} >
+        <P onClick={() => {
+           return dispatch(getFullRecipes())
+        }}>FoodApp</P>
+        </Link>
         <Select id="diets" onChange = { e =>  {
            e.preventDefault();
           return dispatch(filterPerDiet(e.target.value))}

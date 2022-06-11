@@ -60,6 +60,7 @@ export const Form = styled.form`
     justify-content: flex-start;
     align-content: center;
     flex-wrap: nowrap;
+    overflow: scroll;
 `;
 
 export const Title = styled.input`
@@ -182,4 +183,17 @@ export const ButtonCreate = styled.input`
     &:hover {
     cursor: pointer;
     };
+`;
+
+export const Error = styled.label`
+    color: red;
+`;
+
+export const Ul = styled.ul`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    list-style: none;
 `;

@@ -11,7 +11,7 @@ const initialState = {
      filter: false,
      recipe: {},
      diets: [],
-     post: {},
+     post: '',
      item: [], // casntidad de rutas por pagina  9 elementos
      currentPage: 0 // pagina en la que se encuentra
  };
@@ -25,7 +25,8 @@ function rootReducer(state = initialState, action){
             recipesFilter: [],
             filter: false,
             currentPage: action.payload.currentPage,
-            recipe: {}
+            recipe: {},
+            post: '',
         }
     }
     if(action.type === GET_RECIPE_DETAIL){

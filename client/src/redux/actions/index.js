@@ -71,12 +71,14 @@ export function getAllDiets(){
 }
 
 export function postRecipe(payload){
-    return function(dispatch){
-        return axios.post(HOST+`recipes`, payload)
-        .then(response => response.data)
-        .the(data  => {
-            dispatch({type: POST_RECIPE, payload: data});
-        });
+    return async function(dispatch){
+        try {
+            let  response = await  axios.post(HOST+`recipes`, payload);
+            alert(response.data.msg)
+            dispatch({type: POST_RECIPE, payload: response.data.msg});
+        } catch (error) { 
+            return dispatch({type: ERROR, payload: error.response.data});
+        }
     }
 }
 //next page

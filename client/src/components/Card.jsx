@@ -29,3 +29,14 @@ const Card =({id, name,img, typediets, health_score}) => {
 }
   
 export default Card;
+
+/**
+ * if(e.target.type){
+            setInput({
+                input,
+                [e.target.name]: e.target.value
+            })
+        }else{
+        }
+
+ */

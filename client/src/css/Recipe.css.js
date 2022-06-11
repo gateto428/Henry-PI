@@ -58,8 +58,3 @@ export const Ul = styled.ul`
     border-style: double;
     margin-bottom: 0.5em;
 `;
-
-/**
- * display: contents;
-    list-style: none;
- */
