@@ -2,6 +2,7 @@ import axios from 'axios';
 const HOST = 'http://localhost:3001/';
 export const GET_All_RECIPES = 'GET_All_RECIPES';
 export const GET_RECIPE_DETAIL = 'GET_RECIPE_DETAIL';
+export const DELETE_RECIPE = 'DELETE_RECIPE';
 export const GET_RECIPES_TITLE = 'GET_RECIPES_TITLE';
 export const GET_ALL_DIETS = 'GET_ALL_DIETS';
 export const POST_RECIPE = 'POST_RECIPE'
@@ -45,6 +46,17 @@ export function getRecipeDetail(id){
         }
     }
 }
+
+export function deleteRecipe(id){
+    return async function(dispatch){
+        try {
+            let response =  await axios.delete(HOST+`recipes/${id}`)
+            return dispatch({type: DELETE_RECIPE, payload: response.data.msg});
+        } catch (error) {
+            return dispatch({type: ERROR, payload: error.response.data});
+        }
+    }
+}
 //get Recipes per title dispatch({type: GET_RECIPES_TITLE, payload: data});
 export function getRecipesTitle(title){
     return async function(dispatch){
@@ -54,6 +66,7 @@ export function getRecipesTitle(title){
                 payload: {recipes: response.data, 
                 currentPage: 0}});
         } catch (error) {
+            alert(error.response.data.msg);
             return dispatch({type: ERROR, payload: error.response.data});
         }
        

@@ -2,11 +2,9 @@ import React from 'react';
 import { Container,Icon, Name, Information, HealtyPanel, HealtyIcon, Li, Detail, Ul } from '../css/Card.css.js';
 import { Link } from 'react-router-dom';
 import img2 from '../img/healtlyIcon.png'
-import {getRecipeDetail} from '../redux/actions/index.js'
-import { useDispatch } from 'react-redux'
+
 
 const Card =({id, name,img, typediets, health_score}) => {
-    const dis = useDispatch();
     return (
             <Container>
                     <Information color={Math.floor(Math.random() * ((9+1)-0)+0)}>
@@ -14,7 +12,7 @@ const Card =({id, name,img, typediets, health_score}) => {
                     </Information>
                         <Detail>
                         <Link to ={`/recipe/${id}`} >
-                            <Name onClick={()=>dis(getRecipeDetail(id))}>{name}</Name>
+                            <Name >{name}</Name>
                         </Link>
                             <HealtyPanel>
                                 <HealtyIcon src={img2} alt='food im'/>

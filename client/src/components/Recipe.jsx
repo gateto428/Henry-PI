@@ -1,11 +1,25 @@
-import React  from "react";
+import React, { useEffect }  from "react";
 import {Nav, ButtonBack} from '../css/Form.css.js';
 import { Link } from 'react-router-dom'; 
 import { connect } from "react-redux";
-import { Container, Info, Summary, Icon, Ul } from "../css/Recipe.css.js";
+import { Container, Info, Summary, Icon, Ul, ButtonD, DivButtonD } from "../css/Recipe.css.js";
 import Loader from "./Loader.jsx";
+import {deleteRecipe, getRecipeDetail} from '../redux/actions/index.js'
+import { useDispatch } from 'react-redux'
+import { useParams } from "react-router-dom";
 
 const Recipe =(props) => {
+    const dis = useDispatch();
+
+    const deleteR = () =>{
+       dis(deleteRecipe(props.recipe.id));
+    }
+
+    let { id } = useParams();
+    useEffect(() => {
+       dis(getRecipeDetail(id));
+      }, []);
+
     if(Object.keys(props.recipe).length !== 0){
         return(
             <Container>
@@ -15,6 +29,9 @@ const Recipe =(props) => {
                 </Link>
                 </Nav>
                 <Info>
+                    <DivButtonD>
+                        {props.recipe.id.toString().includes('-')?<Link to="/home"><ButtonD onClick={deleteR}></ButtonD></Link>:<label></label>} 
+                    </DivButtonD>
                      <h1>{props.recipe.name}</h1>
                      <Icon src={props.recipe.img} alt='food im'/>
                      <Summary>{props.recipe.summary}</Summary>

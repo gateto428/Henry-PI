@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import img from '../img/BackgroudCard.jpeg';
+import button from '../img/deleteButton.png';
 
 export const Container = styled.div`
     width: 100vw;
@@ -57,4 +58,27 @@ export const Ul = styled.ul`
     border-radius: 30px;
     border-style: double;
     margin-bottom: 0.5em;
+`;
+
+export const ButtonD = styled.button`
+    width: 2.7vw;
+    height: 5vh;
+    margin-right: 1em;
+    border-style: none;
+    background-color: white;
+    background-image: url(${button});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:rgba(0, 0, 0, 0.0);
+    &:hover {
+    cursor: pointer;
+    };
+`;
+
+export const DivButtonD = styled.div`
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: 100%;
 `;

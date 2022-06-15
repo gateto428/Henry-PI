@@ -6,6 +6,7 @@ fc0dbcee9b5b4333bd4d7ee723c1c205
 fadd4e097e024531872af600e64a8464
 7506119a79e647a1976bae62f27cd41b
 9a7b11b4db1a49d58324387ad9455526
+031b3f48987c4c8580ac3f27ff14daf7
 
 
 INSERT INTO typediets  VALUES (uuid_generate_v4(), 'gluten-free'), (uuid_generate_v4(), 'ketogenic'), (uuid_generate_v4(), 'vegetarian'), (uuid_generate_v4(), 'lacto-vegetarian'), (uuid_generate_v4(), 'ovo-vegetarian'), (uuid_generate_v4(), 'vegan'), (uuid_generate_v4(), 'paleo'), (uuid_generate_v4(), 'low-fodmap'), (uuid_generate_v4(), 'whole30');

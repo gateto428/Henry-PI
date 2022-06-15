@@ -149,4 +149,30 @@ router.get('/:id', async(req, res)=>{
     }
 });
 
+router.delete('/:id', async(req, res) => {
+    try {
+        let { id } = req.params;
+        if(!id) return res.status(400).json({ msg: `Ingrese id` });
+        const deleteR = await recipe.destroy({
+            where:{
+                id: id,
+            }
+        })
+        return res.status(200).json({ msg: "successfully deleted"});
+    } catch (error) {
+        return res.status(400).json({ msg: "error deleted"});
+    }
+});
+
+
+/***
+ * const newRecipe = await recipe.create({
+            name,
+            summary,
+            health_score,
+            img, 
+          });
+ * 
+ * 
+ */
 module.exports = router;

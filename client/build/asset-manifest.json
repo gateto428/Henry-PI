@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/static/js/main.53d84a00.chunk.js",
+    "main.js.map": "/static/js/main.53d84a00.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ef1d409b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ef1d409b.js.map",
+    "static/js/2.1f66a9a0.chunk.js": "/static/js/2.1f66a9a0.chunk.js",
+    "static/js/2.1f66a9a0.chunk.js.map": "/static/js/2.1f66a9a0.chunk.js.map",
+    "static/js/3.48ffd863.chunk.js": "/static/js/3.48ffd863.chunk.js",
+    "static/js/3.48ffd863.chunk.js.map": "/static/js/3.48ffd863.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.1f66a9a0.chunk.js.LICENSE.txt": "/static/js/2.1f66a9a0.chunk.js.LICENSE.txt",
+    "static/media/BackgroudCard.e7d8cc1e.jpeg": "/static/media/BackgroudCard.e7d8cc1e.jpeg",
+    "static/media/backgroundApp.e2cdc698.jpeg": "/static/media/backgroundApp.e2cdc698.jpeg",
+    "static/media/loader.10532379.gif": "/static/media/loader.10532379.gif",
+    "static/media/next.6b0b1880.png": "/static/media/next.6b0b1880.png",
+    "static/media/previous.3f4e6bc4.png": "/static/media/previous.3f4e6bc4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ef1d409b.js",
+    "static/js/2.1f66a9a0.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.53d84a00.chunk.js"
+  ]
+}

@@ -2,7 +2,7 @@ import { GET_All_RECIPES,
     GET_RECIPE_DETAIL, 
     GET_RECIPES_TITLE, 
     GET_ALL_DIETS, 
-    POST_RECIPE, ITEM_PER_PAGE, NEXT_PAGE, PREVIOUS_PAGE, FILTER_DIET, SORT } from "../actions/index.js";
+    POST_RECIPE, ITEM_PER_PAGE, NEXT_PAGE, PREVIOUS_PAGE, FILTER_DIET, SORT, DELETE_RECIPE } from "../actions/index.js";
     
 //State Global Init 
 const initialState = {
@@ -65,6 +65,13 @@ function rootReducer(state = initialState, action){
                 item: action.payload.item,
                 currentPage: action.payload.currentPage
             }
+    }
+    if(action.type === DELETE_RECIPE){
+        alert(action.payload)
+        return{
+            ...state,
+            filter: false,
+        }
     }
     if(action.type === PREVIOUS_PAGE){
         return{
