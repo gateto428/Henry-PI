@@ -153,26 +153,61 @@ router.delete('/:id', async(req, res) => {
     try {
         let { id } = req.params;
         if(!id) return res.status(400).json({ msg: `Ingrese id` });
-        const deleteR = await recipe.destroy({
+       await step.destroy({ 
+            where:{
+                recipeId: id,
+            }
+        });
+        await recipe.destroy({
             where:{
                 id: id,
             }
         })
         return res.status(200).json({ msg: "successfully deleted"});
     } catch (error) {
-        return res.status(400).json({ msg: "error deleted"});
+        return res.status(400).json(error);
     }
 });
 
+router.put('/', async(req, res) => {
+    try {
+        let {id, name, summary, health_score, steps, img, type, typeN} = req.body;
+        steps = steps.sort((a, b) => {
+            return a.number - b.number;
+        })
 
-/***
- * const newRecipe = await recipe.create({
-            name,
-            summary,
-            health_score,
-            img, 
-          });
- * 
- * 
- */
+        for(let i = 0; i < steps.length;i++){
+            await step.update(steps[i], {
+                where: {
+                    recipeId: id,
+                    number: steps[i].number,
+                }
+              });
+        }
+        const recipeS = await recipe.findOne({ 
+            where: {
+                id: id
+            } 
+        });
+        await recipeS.update({name, summary, health_score, img}); 
+
+       for(let i = 0; i < type.length; i++){
+            let  promise   = await typediet.findOne({
+              where: { name: type[i].replaceAll(" ", "-") },
+            })
+            await recipeS.removeTypediet(promise)  ;  
+        
+       }
+
+       for(let i = 0; i < typeN.length; i++){
+        let  promise   = await typediet.findOne({
+          where: { name: typeN[i].replaceAll(" ", "-") },
+        })
+        await recipeS.addTypediet(promise)  ;  
+    }
+        return res.status(200).json("Recipe Updated");
+    } catch (error) {
+        return res.status(400).json({ msg: "Recipe Not upated"});
+    }
+}) 
 module.exports = router;
